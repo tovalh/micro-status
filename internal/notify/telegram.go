@@ -2,9 +2,11 @@ package notify
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
+	"net"
 	"net/http"
 	"time"
 )
@@ -18,10 +20,19 @@ type Telegram struct {
 }
 
 func NewTelegram(token, chatID string) *Telegram {
+	// Force IPv4: Railway's IPv6 egress to api.telegram.org can black-hole,
+	// making the request hang until the timeout. Dialing tcp4 avoids that.
+	dialer := &net.Dialer{Timeout: 10 * time.Second}
+	transport := &http.Transport{
+		DialContext: func(ctx context.Context, network, addr string) (net.Conn, error) {
+			return dialer.DialContext(ctx, "tcp4", addr)
+		},
+	}
+
 	return &Telegram{
 		token:  token,
 		chatID: chatID,
-		client: &http.Client{Timeout: 5 * time.Second},
+		client: &http.Client{Timeout: 10 * time.Second, Transport: transport},
 	}
 }
 
