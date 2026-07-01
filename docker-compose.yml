@@ -1,0 +1,17 @@
+services:
+  micro-status:
+    build:
+      context: .
+      dockerfile: Dockerfile.mock
+    ports:
+      - "8081:8081"
+
+  monitor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - micro-status
+    # Override the baked-in config with one that targets the micro-status host.
+    volumes:
+      - ./config.docker.yaml:/app/config.yaml:ro

@@ -1,0 +1,4 @@
+.env
+.idea/
+/health_status
+/mockservice

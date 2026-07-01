@@ -1,0 +1,8 @@
+services:
+  - name: Orders API
+    url: http://micro-status:8081/health
+    interval: 5s
+    dependencies_url: http://micro-status:8081/health/dependencies
+
+webhook:
+  url: ""

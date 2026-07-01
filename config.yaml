@@ -1,0 +1,13 @@
+services:
+  - name: Orders API
+    url: http://localhost:8081/health
+    interval: 5s
+    dependencies_url: http://localhost:8081/health/dependencies
+  - name: Public Echo
+    url: https://httpbin.org/status/200
+    interval: 10s
+
+# Optional generic webhook (Slack / Discord incoming webhook URL).
+# Leave empty to alert on the console only.
+webhook:
+  url: ""
