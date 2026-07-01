@@ -8,9 +8,9 @@ import (
 	"sync"
 	"time"
 
-	"health_status/internal/config"
-	"health_status/internal/notify"
-	"health_status/internal/service"
+	"github.com/tovalh/micro-status/internal/config"
+	"github.com/tovalh/micro-status/internal/notify"
+	"github.com/tovalh/micro-status/internal/service"
 )
 
 // Notifier is any channel that can deliver an alert (console, webhook, ...).

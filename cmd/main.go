@@ -7,9 +7,9 @@ import (
 
 	"github.com/joho/godotenv"
 
-	"health_status/internal/config"
-	"health_status/internal/monitor"
-	"health_status/internal/notify"
+	"github.com/tovalh/micro-status/internal/config"
+	"github.com/tovalh/micro-status/internal/monitor"
+	"github.com/tovalh/micro-status/internal/notify"
 )
 
 func main() {

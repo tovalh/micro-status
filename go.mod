@@ -1,4 +1,4 @@
-module health_status
+module github.com/tovalh/micro-status
 
 go 1.26.2
 
