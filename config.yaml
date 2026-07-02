@@ -1,13 +1,13 @@
 services:
   - name: LaraVentas
     url: https://laraventas-production.up.railway.app/up
-    interval: 30s
+    interval: 5s
     # MySQL se monitorea como dependencia de la app.
     dependencies_url: https://laraventas-production.up.railway.app/health/dependencies
 
   - name: notif_service
     url: https://notifservice-production.up.railway.app/health
-    interval: 30s
+    interval: 5s
 
 # Webhook genérico opcional (Slack/Discord). Vacío = solo consola + Telegram.
 webhook:
